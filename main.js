@@ -24,6 +24,7 @@ const comparator = {
 
 var compChoice = 'rock'
 var compEmoji = comparator.rock.emoji
+var compArr = Object.keys(comparator)
 //#endregion
 
 //#region GAME LOGIC
@@ -31,11 +32,9 @@ var compEmoji = comparator.rock.emoji
  * Retruns a random choice from the array and assigns it to compChoice
  */
 function randomCompChoice() {
-   let compArr = Object.keys(comparator)
    let randIndex = Math.floor(Math.random() * (compArr.length))
    compChoice = compArr[randIndex]
    compEmoji = comparator[compChoice].emoji
-   console.log(compChoice)
 }
 
 /**
@@ -46,7 +45,6 @@ function randomCompChoice() {
  */
 function play(choice) {
    let result = ''
-   console.log('pre-logic choices', choice, compChoice)
    drawChoices(choice)
    if (choice == compChoice) {
       result = 'draw'
@@ -58,10 +56,8 @@ function play(choice) {
          result = 'lose'
       }
    }
-   console.log('results', choice, compChoice, result)
    drawResults(result)
    randomCompChoice()
-   console.log('new comp choice', compChoice)
 }
 //#endregion
 
@@ -79,7 +75,6 @@ function drawResults(result) {
  * Draws buttons to the center row iteratively based on comparator object.
  */
 function drawButtons() {
-   let compArr = Object.keys(comparator)
    let template = ''
    compArr.forEach(weapon => {
       let compBtn = weapon.toUpperCase()
