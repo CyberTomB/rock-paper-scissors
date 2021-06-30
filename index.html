@@ -32,30 +32,14 @@
 
 <body class="debug">
    <main class="container  justify-content-center">
-      <div class="row justify-content-around">
-         <div class="card col-3 btn" style="width: 18rem;" onclick="play('paper')">
-            <img class="card-img-top" src="paper.png" alt="Card image cap">
-            <div class="card-body">
-               <h2 class="card-text">Paper</h2>
-            </div>
-         </div>
-         <div class="card col-3 btn" style="width: 18rem;" onclick="play('rock')">
-            <img class="card-img-top" src="rock.png" alt="Card image cap">
-            <div class="card-body">
-               <h2 class="card-text">Rock</h2>
-            </div>
-         </div>
-         <div class="card col-3 btn" style="width: 18rem;" onclick="play('scissors')">
-            <img class="card-img-top" src="scissors.png" alt="Card image cap">
-            <div class="card-body">
-               <h2 class="card-text">Scissors</h2>
-            </div>
-         </div>
+      <div class="row flex-column py-3 align-items-center justify-content-between" id="buttons">
       </div>
       <div class="row justify-content-center" id="message">
       </div>
    </main>
    <script src="main.js"></script>
 </body>
+
+
 
 </html>

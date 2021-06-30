@@ -22,6 +22,7 @@ function randomCompChoice() {
    let compArr = Object.keys(comparator)
    let randIndex = Math.floor(Math.random() * (compArr.length))
    compChoice = compArr[randIndex]
+   console.log(compChoice)
 }
 
 function play(choice) {
@@ -48,4 +49,16 @@ function drawResult(result) {
    document.getElementById('message').innerHTML = template
 }
 
+function drawButtons() {
+   let compArr = Object.keys(comparator)
+   let template = ''
+   for (i = 0; i < compArr.length; i++) {
+      let compBtn = compArr[i].toUpperCase()
+      template += `<button class="col-2 btn btn-primary m-2" onclick="play('${compArr[i]}')">${compBtn}</button>`
+   }
+   document.getElementById('buttons').innerHTML = template
+}
+
+
+drawButtons()
 randomCompChoice()
