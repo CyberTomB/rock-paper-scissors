@@ -1,3 +1,4 @@
+//#region GLOBAL VAR
 const comparator = {
    rock: {
       wins: ['lizard', 'scissors'],
@@ -23,7 +24,12 @@ const comparator = {
 
 var compChoice = 'rock'
 var compEmoji = comparator.rock.emoji
+//#endregion
 
+//#region GAME LOGIC
+/**
+ * Retruns a random choice from the array and assigns it to compChoice
+ */
 function randomCompChoice() {
    let compArr = Object.keys(comparator)
    let randIndex = Math.floor(Math.random() * (compArr.length))
@@ -32,6 +38,12 @@ function randomCompChoice() {
    console.log(compChoice)
 }
 
+/**
+ * Invokes drawChoices, then
+ * Compares player's choice to computer's, then 
+ * Invokes drawResults and randomCompChoice
+ * @param {String} choice 
+ */
 function play(choice) {
    let result = ''
    console.log('pre-logic choices', choice, compChoice)
@@ -47,16 +59,25 @@ function play(choice) {
       }
    }
    console.log('results', choice, compChoice, result)
-   drawResult(result)
+   drawResults(result)
    randomCompChoice()
    console.log('new comp choice', compChoice)
 }
+//#endregion
 
-function drawResult(result) {
+//#region DRAW FUNCTIONS
+/**
+ * Draws "You [result]!" where [result] is defined by play()
+ * @param {String} result 
+ */
+function drawResults(result) {
    let template = `<h1 class="col-6 text-center">You ${result}!</h1>`
    document.getElementById('message').innerHTML = template
 }
 
+/**
+ * Draws buttons to the center row iteratively based on comparator object.
+ */
 function drawButtons() {
    let compArr = Object.keys(comparator)
    let template = ''
@@ -67,10 +88,17 @@ function drawButtons() {
    document.getElementById('buttons').innerHTML = template
 }
 
+/**
+ * Draws emojis to top row based on variable passed in play().
+ * @param {String} choice 
+ */
 function drawChoices(choice) {
    document.getElementById('my-choice').innerText = comparator[choice].emoji
    document.getElementById('comp-choice').innerText = compEmoji
 }
+//#endregion
 
+//#region INITIAL FUNCTIONS
 drawButtons()
 randomCompChoice()
+//#endregion

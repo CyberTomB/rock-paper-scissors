@@ -12,25 +12,7 @@
    <title>Janken</title>
 </head>
 
-<style>
-   body.debug .container,
-   body.debug .container-fluid {
-      outline: 2px double blue;
-      outline-offset: -2px;
-   }
-
-   body.debug .row {
-      outline: 2px dashed red;
-      outline-offset: -2px;
-   }
-
-   body.debug [class*="col-"] {
-      outline: 2px dotted forestgreen;
-      outline-offset: -3px;
-   }
-</style>
-
-<body class="">
+<body class=>
    <main class="container  justify-content-center">
       <div class="row justify-content-around">
          <h2 class="col-5 text-center" id="my-choice">✂</h2>
@@ -38,8 +20,10 @@
          <h2 class="col-5 text-center" id="comp-choice">📃</h2>
       </div>
       <div class="row flex-column py-3 align-items-center justify-content-between" id="buttons">
+         <!-- Buttons will be drawn here when drawButtons is called -->
       </div>
       <div class="row justify-content-center" id="message">
+         <!-- Updates when drawResults is called -->
          <h1 class="col-6 text-center">Let's Play!</h1>
       </div>
    </main>
