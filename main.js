@@ -81,10 +81,10 @@ function drawResults(result) {
 function drawButtons() {
    let compArr = Object.keys(comparator)
    let template = ''
-   for (i = 0; i < compArr.length; i++) {
-      let compBtn = compArr[i].toUpperCase()
-      template += `<button class="col-2 btn btn-primary m-2" onclick="play('${compArr[i]}')">${compBtn}</button>`
-   }
+   compArr.forEach(weapon => {
+      let compBtn = weapon.toUpperCase()
+      template += `<button class="col-2 btn btn-primary m-2" onclick="play('${weapon}')">${compBtn}</button>`
+   })
    document.getElementById('buttons').innerHTML = template
 }
 
