@@ -1,6 +1,22 @@
-const comparator = { rock: 'scissors', paper: 'rock', scissors: 'paper' }
+const comparator = {
+   rock: {
+      wins: ['lizard', 'scissors']
+   },
+   paper: {
+      wins: ['rock', 'spock']
+   },
+   scissors: {
+      wins: ['paper', 'lizard']
+   },
+   lizard: {
+      wins: ['paper', 'spock']
+   },
+   spock: {
+      wins: ['rock', 'scissors']
+   }
+}
 
-let compChoice = 'rock'
+var compChoice = 'rock'
 
 function randomCompChoice() {
    let compArr = Object.keys(comparator)
@@ -9,14 +25,17 @@ function randomCompChoice() {
 }
 
 function play(choice) {
-   let win = comparator[choice]
    let result = ''
+   console.log('pre-logic choices', choice, compChoice)
    if (choice == compChoice) {
       result = 'draw'
-   } else if (win == compChoice) {
-      result = 'win'
    } else {
-      result = 'lose'
+      winning = comparator[choice].wins.find(win => win == compChoice)
+      if (winning) {
+         result = 'win'
+      } else {
+         result = 'lose'
+      }
    }
    console.log('results', choice, compChoice, result)
    drawResult(result)
