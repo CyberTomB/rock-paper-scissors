@@ -24,7 +24,6 @@ const comparator = {
 
 var compChoice = 'rock'
 var compEmoji = comparator.rock.emoji
-var compArr = Object.keys(comparator)
 var scores = { yourScore: 0, myScore: 0, roundCount: 0, yourWinP: 0, myWinP: 0 }
 //#endregion
 
@@ -33,6 +32,7 @@ var scores = { yourScore: 0, myScore: 0, roundCount: 0, yourWinP: 0, myWinP: 0 }
  * Retruns a random choice from the array and assigns it to compChoice
  */
 function randomCompChoice() {
+   let compArr = Object.keys(comparator)
    let randIndex = Math.floor(Math.random() * (compArr.length))
    compChoice = compArr[randIndex]
    compEmoji = comparator[compChoice].emoji
@@ -110,8 +110,9 @@ function loadScores() {
  */
 function clearScores() {
    window.localStorage.removeItem('scores')
-   let scoresArr = Object.keys(scores)
-   scoresArr.forEach(i => scores[i] = 0)
+   for (let key in scores) {
+      scores[key] = 0
+   }
    document.getElementById('clear-scores').classList.add('hidden')
    drawScores()
 }
@@ -133,10 +134,10 @@ function drawResults(result) {
  */
 function drawButtons() {
    let template = ''
-   compArr.forEach(weapon => {
-      let compBtn = weapon.toUpperCase()
-      template += `<button class="col-8 col-md-3 btn btn-primary m-2 p-3 p-md-2" onclick="play('${weapon}')">${compBtn}</button>`
-   })
+   for (let key in comparator) {
+      let compBtn = key.toUpperCase()
+      template += `<button class="col-8 col-md-3 btn btn-primary m-2 p-3 p-md-2" onclick="play('${key}')">${compBtn}</button>`
+   }
    document.getElementById('buttons').innerHTML = template
 }
 
