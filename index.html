@@ -12,9 +12,25 @@
    <title>Janken</title>
 </head>
 
+<style>
+   body.debug .container,
+   body.debug .container-fluid {
+      outline: 2px double blue;
+      outline-offset: -2px;
+   }
 
+   body.debug .row {
+      outline: 2px dashed red;
+      outline-offset: -2px;
+   }
 
-<body>
+   body.debug [class*="col-"] {
+      outline: 2px dotted forestgreen;
+      outline-offset: -3px;
+   }
+</style>
+
+<body class="debug">
    <main class="container  justify-content-center">
       <div class="row justify-content-around">
          <h2 class="col-5 text-center" id="my-choice">✂</h2>
@@ -28,22 +44,21 @@
          <!-- Updates when drawResults is called -->
          <h1 class="col-6 text-center p-3" id="message">Let's Play!</h1>
       </div>
-      <div class="row justify-content-around p-4 align-items-center" id="scores" style="min-height: 170px;">
+      <div class="row justify-content-around align-items-center" id="scores" style="min-height: 170px;">
          <!-- Updates when drawResults is called -->
-         <h1 class="col-4 text-center" id="your-score">
+         <h2 class="col-6 col-md-4 text-center order-1 order-md-1" id="your-score">
             Your Score: 0
             Win Rate: 0
-         </h1>
-         <div class="col-3 text-center">
-            <button class="btn btn-danger hidden" onclick="clearScores()" id="clear-scores">Clear
+         </h2>
+         <div class="col-md-3 text-center order-3 order-md-2">
+            <button class="btn btn-danger hidden mt-1 mb-2" onclick="clearScores()" id="clear-scores">Clear
                Scores</button>
-            <hr>
             <h5 id="round-count"></h5>
          </div>
-         <h1 class="col-4 text-center" id="my-score">
+         <h2 class="col-6 col-md-4 text-center order-2 order-md-3" id="my-score">
             My Score: 0
             Win Rate: 0
-         </h1>
+         </h2>
       </div>
    </main>
    <script src="main.js"></script>

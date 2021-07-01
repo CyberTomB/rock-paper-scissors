@@ -135,7 +135,7 @@ function drawButtons() {
    let template = ''
    compArr.forEach(weapon => {
       let compBtn = weapon.toUpperCase()
-      template += `<button class="col-2 btn btn-primary m-2" onclick="play('${weapon}')">${compBtn}</button>`
+      template += `<button class="col-8 col-md-3 btn btn-primary m-2 p-3 p-md-2" onclick="play('${weapon}')">${compBtn}</button>`
    })
    document.getElementById('buttons').innerHTML = template
 }
