@@ -96,8 +96,8 @@ function clearScores() {
  * @param {String} result 
  */
 function drawResults(result) {
-   let template = `<h1 class="col-6 text-center">You ${result}!</h1>`
-   document.getElementById('message').innerHTML = template
+   let template = `You ${result}!`
+   document.getElementById('message').innerText = template
    drawScores()
 }
 

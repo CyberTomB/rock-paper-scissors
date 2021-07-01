@@ -17,22 +17,25 @@
       <div class="row justify-content-around">
          <h2 class="col-5 text-center" id="my-choice">✂</h2>
          <h3 class="col-1 text-center">vs</h3>
-         <h3 class="col-1" id="round-count"></h3>
          <h2 class="col-5 text-center" id="comp-choice">📃</h2>
       </div>
       <div class="row flex-column py-3 align-items-center justify-content-between" id="buttons">
          <!-- Buttons will be drawn here when drawButtons is called -->
       </div>
-      <div class="row justify-content-center" id="message">
+      <div class="row justify-content-center">
          <!-- Updates when drawResults is called -->
-         <h1 class="col-6 text-center">Let's Play!</h1>
+         <h1 class="col-6 text-center p-3" id="message">Let's Play!</h1>
       </div>
-      <div class="row justify-content-around" id="scores">
+      <div class="row justify-content-around p-4 mt-3" id="scores">
          <!-- Updates when drawResults is called -->
-         <h1 class="col-5 text-center" id="your-score">Your Score: 0</h1>
-         <button class="col-2 btn btn-danger mt-2 hidden" onclick="clearScores()" id="clear-scores">Clear
-            Scores</button>
-         <h1 class="col-5 text-center" id="my-score">My Score: 0</h1>
+         <h1 class="col-4 text-center" id="your-score">Your Score: 0</h1>
+         <div class="col-3 p-3 m-2 text-center">
+            <button class="btn btn-danger hidden" onclick="clearScores()" id="clear-scores">Clear
+               Scores</button>
+            <hr>
+            <h5 id="round-count"></h5>
+         </div>
+         <h1 class="col-4 text-center" id="my-score">My Score: 0</h1>
       </div>
    </main>
    <script src="main.js"></script>
