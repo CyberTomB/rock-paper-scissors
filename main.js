@@ -38,6 +38,11 @@ function randomCompChoice() {
    compEmoji = comparator[compChoice].emoji
 }
 
+/**
+ * Takes a score then calculates and updates the win percentage in the scores object
+ * @param {Number} score 
+ * @returns a number to be written as a percentage
+ */
 function calcWinP(score) {
    let winP = 0
    let combinedScore = scores.yourScore + scores.myScore
@@ -51,7 +56,8 @@ function calcWinP(score) {
 /**
  * Invokes drawChoices, then
  * Compares player's choice to computer's, then 
- * Invokes drawResults and randomCompChoice
+ * Updates win percentage using calcWinP, then
+ * Invokes drawResults and randomCompChoice and saveScores.
  * @param {String} choice 
  */
 function play(choice) {
@@ -77,12 +83,18 @@ function play(choice) {
    saveScores()
 }
 
+/**
+ * Saves scores data to localstorage.
+ */
 function saveScores() {
    let scoresStr = JSON.stringify(scores)
    window.localStorage.setItem('scores', scoresStr)
    document.getElementById('clear-scores').classList.remove('hidden')
 }
 
+/**
+ * Loads scores data from localstorage if any.
+ */
 function loadScores() {
    let scoresData = JSON.parse(localStorage.getItem('scores'))
    if (scoresData) {
@@ -92,6 +104,10 @@ function loadScores() {
    drawScores()
 }
 
+/**
+ * Sets all values in scores to 0 and deletes localstorage scores data,
+ * then hides the button from the page.
+ */
 function clearScores() {
    window.localStorage.removeItem('scores')
    let scoresArr = Object.keys(scores)
@@ -133,6 +149,9 @@ function drawChoices(choice) {
    document.getElementById('comp-choice').innerText = compEmoji
 }
 
+/**
+ * Draws scores, win percentages, and roundcount to the page.
+ */
 function drawScores() {
    document.getElementById('your-score').innerText =
       `Your Score: ${scores.yourScore}
