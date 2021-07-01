@@ -24,7 +24,7 @@ const comparator = {
 
 var compChoice = 'rock'
 var compEmoji = comparator.rock.emoji
-var scores = { yourScore: 0, myScore: 0, roundCount: 0, yourWinP: 0, myWinP: 0 }
+const scores = { yourScore: 0, myScore: 0, roundCount: 0, yourWinP: 0, myWinP: 0 }
 //#endregion
 
 //#region GAME LOGIC
@@ -135,8 +135,8 @@ function drawResults(result) {
 function drawButtons() {
    let template = ''
    for (let key in comparator) {
-      let compBtn = key.toUpperCase()
-      template += `<button class="col-8 col-md-3 btn btn-primary m-2 p-3 p-md-2" onclick="play('${key}')">${compBtn}</button>`
+      let btnText = key.toUpperCase()
+      template += `<button class="col-8 col-md-3 btn btn-primary m-2 p-3 p-md-2" onclick="play('${key}')">${btnText}</button>`
    }
    document.getElementById('buttons').innerHTML = template
 }
