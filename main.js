@@ -114,6 +114,7 @@ function clearScores() {
       scores[key] = 0
    }
    document.getElementById('clear-scores').classList.add('hidden')
+   document.getElementById('message').innerText = "Let's Play!"
    drawScores()
 }
 //#endregion
