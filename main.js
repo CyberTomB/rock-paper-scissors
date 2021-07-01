@@ -25,7 +25,7 @@ const comparator = {
 var compChoice = 'rock'
 var compEmoji = comparator.rock.emoji
 var compArr = Object.keys(comparator)
-var scores = { yourScore: 0, myScore: 0, roundCount: 0 }
+var scores = { yourScore: 0, myScore: 0, roundCount: 0, yourWinP: 0, myWinP: 0 }
 //#endregion
 
 //#region GAME LOGIC
@@ -36,6 +36,16 @@ function randomCompChoice() {
    let randIndex = Math.floor(Math.random() * (compArr.length))
    compChoice = compArr[randIndex]
    compEmoji = comparator[compChoice].emoji
+}
+
+function calcWinP(score) {
+   let winP = 0
+   let combinedScore = scores.yourScore + scores.myScore
+   if (combinedScore != 0) {
+      winP = score / combinedScore
+      winP = Math.round(winP.toFixed(2) * 100)
+   }
+   return winP
 }
 
 /**
@@ -60,6 +70,8 @@ function play(choice) {
          scores.myScore += 1
       }
    }
+   scores.yourWinP = calcWinP(scores.yourScore)
+   scores.myWinP = calcWinP(scores.myScore)
    drawResults(result)
    randomCompChoice()
    saveScores()
@@ -82,9 +94,8 @@ function loadScores() {
 
 function clearScores() {
    window.localStorage.removeItem('scores')
-   scores.myScore = 0
-   scores.yourScore = 0
-   scores.roundCount = 0
+   let scoresArr = Object.keys(scores)
+   scoresArr.forEach(i => scores[i] = 0)
    document.getElementById('clear-scores').classList.add('hidden')
    drawScores()
 }
@@ -124,8 +135,11 @@ function drawChoices(choice) {
 
 function drawScores() {
    document.getElementById('your-score').innerText =
-      `Your Score: ${scores.yourScore}`
-   document.getElementById('my-score').innerText = `My Score: ${scores.myScore}`
+      `Your Score: ${scores.yourScore}
+      Win Rate: ${scores.yourWinP}%`
+   document.getElementById('my-score').innerText =
+      `My Score: ${scores.myScore}
+      Win Rate: ${scores.myWinP}%`
    document.getElementById('round-count').innerText = `Round Count: ${scores.roundCount}`
 }
 //#endregion
