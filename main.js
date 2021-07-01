@@ -84,6 +84,7 @@ function clearScores() {
    window.localStorage.removeItem('scores')
    scores.myScore = 0
    scores.yourScore = 0
+   scores.roundCount = 0
    document.getElementById('clear-scores').classList.add('hidden')
    drawScores()
 }
@@ -125,6 +126,7 @@ function drawScores() {
    document.getElementById('your-score').innerText =
       `Your Score: ${scores.yourScore}`
    document.getElementById('my-score').innerText = `My Score: ${scores.myScore}`
+   document.getElementById('round-count').innerText = `Round Count: ${scores.roundCount}`
 }
 //#endregion
 
