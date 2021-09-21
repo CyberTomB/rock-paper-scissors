@@ -24,7 +24,7 @@ const comparator = {
 
 var compChoice = 'rock'
 var compEmoji = comparator.rock.emoji
-const scores = { yourScore: 0, myScore: 0, roundCount: 0, yourWinP: 0, myWinP: 0 }
+var scores = { yourScore: 0, myScore: 0, roundCount: 0, yourWinP: 0, myWinP: 0 }
 //#endregion
 
 //#region GAME LOGIC
@@ -48,7 +48,7 @@ function calcWinP(score) {
    let combinedScore = scores.yourScore + scores.myScore
    if (combinedScore != 0) {
       winP = score / combinedScore
-      winP = Math.round(winP.toFixed(2) * 100)
+      winP = Math.round(Number(winP.toFixed(2)) * 100)
    }
    return winP
 }
